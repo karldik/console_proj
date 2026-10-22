@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace Console_Snake
@@ -16,16 +18,28 @@ namespace Console_Snake
         static void Main()
         {
             Console.CursorVisible = false;
-            Console.Clear;
+            Console.Clear();
             
             //старт голова,туловище,хвост
-            snake.Add(10,10);
-            snake.Add(9,10);
-            snake.Add(8,10);
+            snake.Add((10,10));
+            snake.Add((9,10));
+            snake.Add((8,10));
 
-            while (true)
+            Draw();
+        }
+
+        static void Draw()
+        {
+            for (int i = 0;i < wigth;i++)
             {
-                
+                Console.SetCursorPosition(i,0); Console.Write("#");
+                Console.SetCursorPosition(i, height - 1); Console.Write("#");
+            }
+
+            for (int j = 0;j < height;j++)
+            {
+                Console.SetCursorPosition(0,j); Console.Write("#");
+                Console.SetCursorPosition(wigth-1,j); Console.Write("#");
             }
         }
     }
